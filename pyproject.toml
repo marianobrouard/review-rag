@@ -1,0 +1,52 @@
+[project]
+name = "review-rag"
+version = "0.1.0"
+description = "Grounded Q&A over product reviews: BM25 retrieval, cited answers with Claude, retrieval evals."
+readme = "README.md"
+authors = [
+    { name = "Mariano Brouard", email = "63933934+marianobrouard@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=2.4.0",
+    "pydantic>=2.14.2",
+    "pydantic-settings>=2.16.2",
+    "typer>=0.27.3",
+]
+
+[project.scripts]
+review-rag = "review_rag.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.3",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# E/W pycodestyle · F pyflakes · I imports · B bugbear · UP pyupgrade · S bandit (seguridad)
+# SIM simplify · N naming · C4 comprehensions · ASYNC async · PT pytest · RUF ruff
+select = ["E", "W", "F", "I", "B", "UP", "S", "SIM", "N", "C4", "ASYNC", "PT", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]  # assert está permitido en tests
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unreachable = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers --strict-config -m \"not llm\""
+markers = ["llm: tests que llaman a un LLM real (excluidos por defecto; ejecutar con -m llm)"]

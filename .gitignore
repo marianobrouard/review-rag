@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+dist/
+build/
+*.egg-info/
+
+# Herramientas
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secretos (solo se sube .env.example)
+.env
+.env.*
+!.env.example
+
+# Claude Code (personal)
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Sistema
+.DS_Store

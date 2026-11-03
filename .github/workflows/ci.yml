@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Mínimo privilegio: el workflow solo puede leer el repositorio.
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Acciones fijadas por SHA (inmutable); Dependabot las mantiene actualizadas.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: true
+
+      - name: Instalar dependencias (falla si uv.lock no está al día)
+        run: uv sync --locked
+
+      - name: Formato
+        run: uv run ruff format --check .
+
+      - name: Lint (incluye reglas de seguridad de bandit)
+        run: uv run ruff check .
+
+      - name: Tipos
+        run: uv run mypy src
+
+      - name: Tests
+        run: uv run pytest

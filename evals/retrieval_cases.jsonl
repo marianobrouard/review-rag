@@ -1,0 +1,10 @@
+{"id": "q01", "question": "¿Cuánto dura la batería de los auriculares?", "product": "Auriculares SoundMax Pro", "relevant_ids": ["sm-01", "sm-04"]}
+{"id": "q02", "question": "¿Son cómodas las almohadillas o duelen las orejas?", "relevant_ids": ["sm-03", "sm-05"]}
+{"id": "q03", "question": "¿Se desconecta el bluetooth?", "relevant_ids": ["sm-06"]}
+{"id": "q04", "question": "¿La aspiradora se atasca en las alfombras?", "relevant_ids": ["cb-01", "cb-04"]}
+{"id": "q05", "question": "¿Sirve para levantar el pelo de mascotas?", "relevant_ids": ["cb-03", "cb-05"]}
+{"id": "q06", "question": "¿La cafetera tiene fugas de agua?", "relevant_ids": ["bh-02", "bh-05"]}
+{"id": "q07", "question": "¿Es fácil de limpiar?", "product": "Cafetera BaristaHome", "relevant_ids": ["bh-03"]}
+{"id": "q08", "question": "¿Cómo responde el servicio técnico con la garantía?", "relevant_ids": ["bh-06"]}
+{"id": "q09", "question": "¿Qué tan preciso es el GPS del reloj?", "relevant_ids": ["fp-02", "fp-05"]}
+{"id": "q10", "question": "¿La pantalla se raya fácilmente?", "product": "Reloj FitPulse 3", "relevant_ids": ["fp-03"]}
